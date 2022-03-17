@@ -10,10 +10,16 @@
     </div>
   </div>
   <div class="row" style="padding-bottom: 10%;">
+    {%if result.name == none%}
+    <div style="margin: 0 auto; text-align: center;" >
+      <h1>Your Profile Is Empty</h1>
+    <a href="{% url 'complete_pro'%}" ><input type="submit" Value="Create one" class="btn btn-danger" ></a>
+    </div>      
+    {% else %}
     <div class="col-sm-4" style="background-color: #343a40;padding-top:5%;">
       <div style="border-radius: 100%;">
-      {% if result.image == '/static/image/icon.png' %}
-        <img src="{% static 'image/icon.png' %}" class="w-25">
+      {% if result.image == 'static/image/icon.png' %}
+        <img src="{% static 'image/icon.png' %}" class="w-75">
      
       {% else %}
       
@@ -25,19 +31,20 @@
     <div class="col-sm-8" style="background-color: #343a40;">
       <form class="form">
         <label style="color: yellow;">Name:</label><br>
-        <input type="text" class="form-control" value=" {{result.name}}"><br>
+        <input type="text" class="form-control"  value="{{result.name}}"><br>
         <label style="color: yellow;"> User Name:</label><br>
-        <input type="text" class="form-control" value=" {{result.username}}"><br>
+        <input type="text" class="form-control" value="{{result.username}}"><br>
         <label style="color: yellow;">Password:</label><br>
-        <input type="password" class="form-control" value=" {{result.password}}"><br>
+        <input type="password" class="form-control" value="{{result.password}}"><br>
         <label style="color: yellow;">Email:</label><br>
         <input type="text" class="form-control" value=" {{result.email}}"><br>
         
       </form>
+
       <a href="{% url 'edit' result.id%}" style="margin-left: 40%;"><input type="submit" Value="Edit" class="btn btn-danger" ></a>      
 
-      <a href="{% url 'complete_pro'%}" ><input type="submit" Value="Update Profile" class="btn btn-danger" ></a>      
     </div>
+    {% endif %}
   </div>
 </div>
 

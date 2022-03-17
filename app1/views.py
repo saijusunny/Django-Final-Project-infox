@@ -230,12 +230,8 @@ def delete_product(request,pk):
 @login_required(login_url='adminlogin')
 def delete_items(request,pk):
     products=title.objects.get(id=pk)
-    if not products.image =="static/image/icon.png":
-                os.remove(products.image.path)
-    else:
-        pass
     products.delete()
-    return redirect('upload_product')
+    return redirect('ourpro')
     
 #signup page
 def usercreate(request):
